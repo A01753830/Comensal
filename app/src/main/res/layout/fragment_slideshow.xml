@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/side_nav_bar"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="60dp" >
+
+
+        <LinearLayout
+            android:layout_width="333dp"
+            android:layout_height="148dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/comedoEncuenta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/fondo_rosa"
+                android:drawableEnd="@drawable/ic_arrow"
+                android:gravity="center_vertical"
+                android:hint="Comedor"
+                android:padding="10dp"
+                android:text="Comedor"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/primerLinear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="97dp"
+                android:background="@drawable/fondo_rosa"
+                android:text="Califica la limpieza del comedor"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="-75dp"
+                android:padding="20dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/round_back_white" />
+
+                <ImageView
+                    android:id="@+id/imageLimpieza"
+                    android:layout_width="122dp"
+                    android:layout_height="126dp"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
+                    android:padding="25dp"
+                    android:src="@drawable/normal" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/caliLimpieza"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:rating="3"
+                android:theme="@style/MyRatingBar" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/segundoLinear"
+            android:layout_width="363dp"
+            android:layout_height="280dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="97dp"
+                android:background="@drawable/fondo_rosa"
+                android:text="Califica la calidad de la comida"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="-75dp"
+                android:padding="20dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/round_back_white" />
+
+                <ImageView
+                    android:id="@+id/imageCalidad"
+                    android:layout_width="122dp"
+                    android:layout_height="126dp"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
+                    android:padding="25dp"
+                    android:src="@drawable/normal" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/caliComida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:rating="3"
+                android:theme="@style/MyRatingBar" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tercerLinear"
+            android:layout_width="367dp"
+            android:layout_height="273dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="97dp"
+                android:background="@drawable/fondo_rosa"
+                android:text="Califica el servicio del comedor"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="-75dp"
+                android:padding="20dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/round_back_white" />
+
+                <ImageView
+                    android:id="@+id/imageServicio"
+                    android:layout_width="122dp"
+                    android:layout_height="126dp"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
+                    android:padding="25dp"
+                    android:src="@drawable/normal" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/caliServicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:rating="3"
+                android:theme="@style/MyRatingBar" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="340dp"
+            android:layout_height="258dp"
+            android:orientation="vertical"
+            android:paddingVertical="20dp"
+            android:background="@drawable/fondo_rosa">
+
+            <TextView
+                android:layout_width="328dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fondo_rosa"
+                android:text="Escribe un mensaje, notación o queja mas detallada"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/mensajeEncuesta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Mensaje/Notación/Queja"
+                android:inputType="text"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
