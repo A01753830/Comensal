@@ -43,7 +43,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="120dp"
                             android:layout_marginEnd="16dp"
-                            android:background="@drawable/fondo_rosa"
+                            android:background="@drawable/fondo_nuevo"
                             android:orientation="horizontal"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
                         </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
+                    <Spinner
                         android:id="@+id/comedorMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
