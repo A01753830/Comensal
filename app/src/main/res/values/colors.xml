@@ -15,4 +15,7 @@
 
     <color name="primary">#DF57C1</color>
     <color name="secondary">#E91E63</color>
+
+    <color name="inicio">#EC1480</color>
+
 </resources>

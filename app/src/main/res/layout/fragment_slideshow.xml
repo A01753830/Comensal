@@ -21,7 +21,7 @@
             android:layout_height="148dp"
             android:orientation="horizontal">
 
-            <TextView
+            <Spinner
                 android:id="@+id/comedoEncuenta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,9 +94,9 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="97dp"
+                android:layout_height="80dp"
                 android:background="@drawable/fondo_rosa"
-                android:text="Califica la calidad de la comida"
+                android:text="Califica la calidad de nuestra la comida"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -191,13 +191,13 @@
             android:layout_height="258dp"
             android:orientation="vertical"
             android:paddingVertical="20dp"
-            android:background="@drawable/fondo_rosa">
+            android:background="@drawable/fondo_nuevo">
 
             <TextView
-                android:layout_width="328dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/fondo_rosa"
-                android:text="Escribe un mensaje, notación o queja mas detallada"
+                android:background="@drawable/fondo_nuevo"
+                android:text="Escribe un mensaje, recomendación, felicitación o alguna critica para ayudarnos a mejorar"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -208,7 +208,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Mensaje/Notación/Queja"
+                android:hint="Mensaje"
                 android:inputType="text"
                 android:textSize="20sp" />
         </LinearLayout>

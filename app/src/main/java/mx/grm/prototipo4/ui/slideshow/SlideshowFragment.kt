@@ -57,7 +57,7 @@ class SlideshowFragment : Fragment() {
                 4.0f -> imageView.setImageResource(R.drawable.feliz2)
                 3.0f -> imageView.setImageResource(R.drawable.normal)
                 2.0f -> imageView.setImageResource(R.drawable.triste)
-                else -> imageView.setImageResource(R.drawable.muy_triste)
+                1.0f -> imageView.setImageResource(R.drawable.muy_triste)
             }
         }
     }
