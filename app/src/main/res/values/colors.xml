@@ -18,4 +18,12 @@
 
     <color name="inicio">#EC1480</color>
 
+
+    <!-- DIF color palette -->
+    <color name="pink_dif">#DF7D95</color>
+    <color name="green_dif">#B5C134</color>
+    <color name="blue_dif">#71A6D9</color>
+    <color name="purple_dif">#8C72B2</color>
+    <color name="black_dif">#4D4D4D</color>
+
 </resources>
