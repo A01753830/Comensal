@@ -13,20 +13,23 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <LinearLayout
-        android:layout_width="281dp"
-        android:layout_height="98dp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="48dp"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="5dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginRight="8dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="92dp"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:contentDescription="@string/nav_header_desc"
                 android:paddingTop="@dimen/nav_header_vertical_spacing"
                 android:scaleType="fitStart"
@@ -38,35 +41,31 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:gravity="start|right|center_horizontal"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="129dp"
-                android:layout_height="155dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:paddingTop="@dimen/nav_header_vertical_spacing"
                 android:scaleType="fitStart"
                 app:srcCompat="@drawable/escudo" />
 
         </LinearLayout>
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="280dp"
-        android:layout_height="29dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="298dp"
-            android:layout_height="match_parent"
-            android:text="Menú de opciones"
-            android:textColor="@color/white"
-            android:textSize="25dp"
-            android:textStyle="bold" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:text="Menú de opciones"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textStyle="bold" />
 
 </LinearLayout>
 

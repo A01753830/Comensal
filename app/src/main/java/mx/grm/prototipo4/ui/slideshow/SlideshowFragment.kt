@@ -6,43 +6,38 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import mx.grm.prototipo4.R
 import mx.grm.prototipo4.databinding.FragmentSlideshowBinding
-import mx.grm.prototipo4.databinding.FragmentSlideshowBinding.inflate
 
 
 class SlideshowFragment : Fragment() {
 
-    private lateinit var ratingBar: RatingBar
-    private lateinit var ratingBar2: RatingBar
-    private lateinit var ratingBar3: RatingBar
-    private lateinit var imageLimpieza: ImageView
-    private lateinit var imageCalidad: ImageView
-    private lateinit var imageServicio: ImageView
+    private lateinit var binding: FragmentSlideshowBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.fragment_slideshow, container, false)
-        ratingBar = view.findViewById(R.id.caliLimpieza)
-        ratingBar2 = view.findViewById(R.id.caliComida)
-        ratingBar3 = view.findViewById(R.id.caliServicio)
+        binding = FragmentSlideshowBinding.inflate(layoutInflater)
+        return binding.root
+    }
 
-        imageLimpieza = view.findViewById(R.id.imageLimpieza)
-        imageCalidad = view.findViewById(R.id.imageCalidad)
-        imageServicio = view.findViewById(R.id.imageServicio)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val ratingBar = binding.caliLimpieza
+        val ratingBar2 = binding.caliComida
+        val ratingBar3 = binding.caliServicio
+
+        val imageLimpieza = binding.imageLimpieza
+        val imageCalidad = binding.imageCalidad
+        val imageServ = binding.imageServ
 
         // Configurar registro
         setupRatingBar(ratingBar, imageLimpieza)
         setupRatingBar(ratingBar2, imageCalidad)
-        setupRatingBar(ratingBar3, imageServicio)
-
-        return view
+        setupRatingBar(ratingBar3, imageServ)
     }
 
     private fun setupRatingBar(ratingBar: RatingBar, imageView: ImageView) {
