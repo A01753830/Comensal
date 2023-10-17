@@ -24,6 +24,8 @@ class GalleryViewModel : ViewModel() {
     val _diningNames = MutableLiveData<List<DiningItem>>()
     val diningNames: LiveData<List<DiningItem>> get() = _diningNames
 
+    val menuMessage = MutableLiveData<String>()
+
     val soup = MutableLiveData<String>()
     val mainCourse = MutableLiveData<String>()
     val carbs = MutableLiveData<String>()
@@ -58,17 +60,26 @@ class GalleryViewModel : ViewModel() {
 
     fun getMenu(diningName: DiningItem) {
 
-        //val date = MyDate().getCurrentDate()
-        val date = "2023-09-12"
+        val date = MyDate().getCurrentDate()
+        //val date = "2023-09-12"
         apiCall.getMenuInfo(diningName, date).enqueue(object: Callback<MenuRes> {
 
             override fun onResponse(call: Call<MenuRes>, response: Response<MenuRes>) {
                 if (response.isSuccessful) {
-                    soup.value = response.body()?.table?.get(0)?.SopaArroz
-                    mainCourse.value = response.body()?.table?.get(0)?.PlatoFuerte
-                    carbs.value = response.body()?.table?.get(0)?.PanTortilla
-                    water.value = response.body()?.table?.get(0)?.AguaDelDia
-                    beansSauce.value = response.body()?.table?.get(0)?.FrijolesSalsa
+                    if (response.body()?.table?.size == 0){
+                        menuMessage.value = "No se ha subido el menú"
+                        soup.value = ""
+                        mainCourse.value = ""
+                        carbs.value = ""
+                        water.value = ""
+                        beansSauce.value = ""
+                    } else{
+                        soup.value = response.body()?.table?.get(0)?.SopaArroz
+                        mainCourse.value = response.body()?.table?.get(0)?.PlatoFuerte
+                        carbs.value = response.body()?.table?.get(0)?.PanTortilla
+                        water.value = response.body()?.table?.get(0)?.AguaDelDia
+                        beansSauce.value = response.body()?.table?.get(0)?.FrijolesSalsa
+                    }
                     println("ÉXITO")
                 } else {
                     println("Falla: ${response.code()}")

@@ -63,6 +63,10 @@ class GalleryFragment : Fragment() {
             }
         }
 
+            viewModel.menuMessage.observe(viewLifecycleOwner) { value ->
+                binding.etMenuMessage.text = value.toString()
+            }
+
             viewModel.soup.observe(viewLifecycleOwner) { value ->
                 binding.etSoup.text = value.toString()
             }
