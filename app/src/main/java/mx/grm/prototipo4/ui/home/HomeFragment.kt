@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import mx.grm.prototipo4.R
 import mx.grm.prototipo4.databinding.FragmentHomeBinding
+import mx.grm.prototipo4.model.QrManager
 import mx.grm.prototipo4.model.vulCondAdapter
 
 /**
@@ -44,6 +45,7 @@ class HomeFragment : Fragment() {
         getVulSituations()
         uploadCustomer()
         setUpListeners()
+        scanQR()
         viewModel.getVulSituations()
     }
 
@@ -122,5 +124,49 @@ class HomeFragment : Fragment() {
         binding.etCurp.text?.clear()
         binding.etBDate.text?.clear()
         //CLEAN SPINNER, RECYCLERVIEW
+    }
+
+    private fun scanQR() {
+        binding.btnRegQr.setOnClickListener {
+            QrManager.startQrCodeScanner(requireActivity(), { result ->
+
+                val regex = """\|+""".toRegex()
+                val regexRes = regex.split(result)
+                println(result)
+                println(regexRes.size)
+                // No repetitions
+                if(regexRes.size == 9) {
+                    binding.etCurp.setText(regexRes[0])
+                    binding.etPLastName.setText(regexRes[1])
+                    binding.etMLastName.setText(regexRes[2])
+                    binding.etName.setText(regexRes[3])
+                    if(regexRes[4] == "HOMBRE") {
+                        binding.spGender.setSelection(0)
+                    } else {
+                        binding.spGender.setSelection(1)
+                    }
+                    val dateParts = regexRes[5].split("/")
+                    val year = dateParts.last()
+                    binding.etBDate.setText(year)
+
+                } else { // Repetitions
+                    binding.etCurp.setText(regexRes[0])
+                    binding.etPLastName.setText(regexRes[2])
+                    binding.etMLastName.setText(regexRes[3])
+                    binding.etName.setText(regexRes[4])
+                    if(regexRes[5] == "HOMBRE") {
+                        binding.spGender.setSelection(0)
+                    } else {
+                        binding.spGender.setSelection(1)
+                    }
+                    val dateParts = regexRes[6].split("/")
+                    val year = dateParts.last()
+                    binding.etBDate.setText(year)
+                } },
+
+                { error ->
+                    println(error.message) }
+            )
+        }
     }
 }
