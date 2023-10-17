@@ -1,6 +1,11 @@
-package mx.grm.prototipo4.model
+package mx.grm.prototipo4.model.requests
 
 import com.google.gson.annotations.SerializedName
+
+/**
+ * Customer's registration Request Model
+ * @author Héctor González Sánchez
+ */
 
 data class RegisterReq(
     @SerializedName("nombre") var name: String,
