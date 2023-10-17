@@ -8,6 +8,7 @@ import android.widget.CheckBox
 import androidx.recyclerview.widget.RecyclerView
 import mx.grm.prototipo4.R
 import mx.grm.prototipo4.databinding.VulSituationBinding
+import mx.grm.prototipo4.model.responses.vulCondItem
 
 class vulCondAdapter(private val context: Context, var arrVulCond: Array<vulCondItem>)
     : RecyclerView.Adapter<vulCondAdapter.vulCondCheck>()

@@ -22,33 +22,40 @@
             android:background="@drawable/alt_food_frame">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/et_foodPrice"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="90dp"
+                android:layout_marginTop="64dp"
                 android:layout_marginEnd="32dp"
-                android:text="Nombre comedor"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="@color/white"
+                android:text="Precio de la comida $13"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="16sp"
+                android:textStyle="bold|italic"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/et_diningStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
                 android:text="ESTATUS"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@color/white"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -89,7 +96,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/spDining"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_weight="1" />
@@ -106,11 +113,11 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/et_menuMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="32dp"
             android:text="Menú del día:"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="24sp"
@@ -129,7 +136,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6">
+            app:layout_constraintTop_toBottomOf="@+id/et_menuMessage">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -152,7 +159,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView12"
+                            android:id="@+id/et_Soup"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -186,7 +193,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView13"
+                            android:id="@+id/et_mainCourse"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -221,7 +228,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView14"
+                            android:id="@+id/et_carbs"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -255,7 +262,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView15"
+                            android:id="@+id/et_water"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -289,7 +296,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView16"
+                            android:id="@+id/et_beansSauce"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
