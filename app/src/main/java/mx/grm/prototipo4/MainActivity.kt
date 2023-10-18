@@ -39,7 +39,8 @@ class MainActivity : AppCompatActivity() {
             val longitud = -99.24592264703536
             val zoomLevel = 13
 
-            val gmmIntentUri = Uri.parse("geo:$latitud,$longitud?z=$zoomLevel")
+            // se debe iniciar con google
+            val gmmIntentUri = Uri.parse("geo:$latitud,$longitud?z=13")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")
 

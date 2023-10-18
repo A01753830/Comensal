@@ -61,6 +61,7 @@ class GalleryViewModel : ViewModel() {
     fun getMenu(diningName: DiningItem) {
 
         val date = MyDate().getCurrentDate()
+        println(date)
         //val date = "2023-09-12"
         apiCall.getMenuInfo(diningName, date).enqueue(object: Callback<MenuRes> {
 
