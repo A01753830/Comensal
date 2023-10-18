@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitManager {
     private val retrofit: Retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl("http://3.95.129.111:8080/")
+            .baseUrl("https://platopatodose3.ddns.net:8080/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
             .build()
     }
