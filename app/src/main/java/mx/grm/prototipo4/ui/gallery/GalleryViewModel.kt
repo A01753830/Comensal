@@ -75,6 +75,7 @@ class GalleryViewModel : ViewModel() {
                         water.value = ""
                         beansSauce.value = ""
                     } else{
+                        menuMessage.value = "Menú del dia:"
                         soup.value = response.body()?.table?.get(0)?.SopaArroz
                         mainCourse.value = response.body()?.table?.get(0)?.PlatoFuerte
                         carbs.value = response.body()?.table?.get(0)?.PanTortilla
