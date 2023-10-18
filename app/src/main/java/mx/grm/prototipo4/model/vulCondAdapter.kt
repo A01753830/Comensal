@@ -10,6 +10,11 @@ import mx.grm.prototipo4.R
 import mx.grm.prototipo4.databinding.VulSituationBinding
 import mx.grm.prototipo4.model.responses.vulCondItem
 
+/**
+ * Adapter for the Customer's Vulnerable Situation
+ * @author Héctor González Sánchez
+ */
+
 class vulCondAdapter(private val context: Context, var arrVulCond: Array<vulCondItem>)
     : RecyclerView.Adapter<vulCondAdapter.vulCondCheck>()
 {

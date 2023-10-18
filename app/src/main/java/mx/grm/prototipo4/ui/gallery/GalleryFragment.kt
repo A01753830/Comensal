@@ -58,7 +58,6 @@ class GalleryFragment : Fragment() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                //COSO QUE NO SÉ
                 println("No hay datos aún")
             }
         }

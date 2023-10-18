@@ -1,5 +1,7 @@
 package mx.grm.prototipo4.ui.home
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import mx.grm.prototipo4.R
 import mx.grm.prototipo4.databinding.FragmentHomeBinding
 import mx.grm.prototipo4.model.QrManager
+import mx.grm.prototipo4.model.responses.vulCondItem
 import mx.grm.prototipo4.model.vulCondAdapter
 
 /**
@@ -42,11 +45,18 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Adaptador vacío
+        val arrVulCond = listOf<vulCondItem>()
+        adapter = vulCondAdapter(requireActivity(), arrVulCond.toTypedArray())
+        binding.rvVulSituations.adapter = adapter
+
         getVulSituations()
         uploadCustomer()
         setUpListeners()
         scanQR()
         viewModel.getVulSituations()
+        getNoticePriv()
+        getHelp()
     }
 
     private fun getVulSituations() {
@@ -123,7 +133,8 @@ class HomeFragment : Fragment() {
         binding.etMLastName.text?.clear()
         binding.etCurp.text?.clear()
         binding.etBDate.text?.clear()
-        //CLEAN SPINNER, RECYCLERVIEW
+        binding.spGender.setSelection(0)
+        getVulSituations()
     }
 
     private fun scanQR() {
@@ -167,6 +178,22 @@ class HomeFragment : Fragment() {
                 { error ->
                     println(error.message) }
             )
+        }
+    }
+
+    private fun getNoticePriv() {
+        binding.tvNoticePriv.setOnClickListener {
+            val url = "https://github.com/Alfredo-Azamar/PruebaPlatoPaTodos"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
+        }
+    }
+
+    private fun getHelp() {
+        binding.tvHelpReg.setOnClickListener {
+            val url = "https://www.gob.mx/curp/"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
         }
     }
 }

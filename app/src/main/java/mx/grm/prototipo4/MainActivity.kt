@@ -37,16 +37,21 @@ class MainActivity : AppCompatActivity() {
         binding.appBarMain.fab.setOnClickListener { view ->
             val latitud = 19.57541866569334
             val longitud = -99.24592264703536
+            val zoomLevel = 13
 
-            // se debe iniciar con google
-            val gmmIntentUri = Uri.parse("geo:$latitud,$longitud?z=13")
+            val gmmIntentUri = Uri.parse("geo:$latitud,$longitud?z=$zoomLevel")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")
 
             if (mapIntent.resolveActivity(packageManager) != null) {
                 startActivity(mapIntent)
+            } else {
+                val mapUrl = "https://www.google.com/maps/@$latitud,$longitud,$zoomLevel"
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(mapUrl))
+                startActivity(browserIntent)
             }
         }
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
