@@ -183,7 +183,7 @@ class HomeFragment : Fragment() {
 
     private fun getNoticePriv() {
         binding.tvNoticePriv.setOnClickListener {
-            val url = "https://github.com/Alfredo-Azamar/PruebaPlatoPaTodos"
+            val url = "https://github.com/Alfredo-Azamar/PruebaPlatoPaTodos/blob/main/Aviso%20de%20privacidad.pdf"
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             startActivity(intent)
         }
