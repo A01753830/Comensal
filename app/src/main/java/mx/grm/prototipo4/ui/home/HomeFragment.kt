@@ -6,17 +6,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Spinner
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import mx.grm.prototipo4.R
 import mx.grm.prototipo4.databinding.FragmentHomeBinding
 import mx.grm.prototipo4.model.QrManager
 import mx.grm.prototipo4.model.responses.vulCondItem
@@ -25,6 +20,7 @@ import mx.grm.prototipo4.model.vulCondAdapter
 /**
  * Customer's auto-registration Frag View
  * @author Héctor González Sánchez
+ * @author Alfredo Azamar López
  */
 
 
@@ -80,31 +76,50 @@ class HomeFragment : Fragment() {
     }
 
     private fun uploadCustomer() {
+
+        val minDate = 1920
+        val maxDate = 2023
+
         binding.btnUploadCostumer.setOnClickListener {
+
             val name = binding.etName.text.toString()
             val pLastName = binding.etPLastName.text.toString()
             val mLastName = binding.etMLastName.text.toString()
-            val curp = binding.etCurp.text.toString()
-            val bDate = binding.etBDate.text.toString()
+            val curp = binding.etCurp.text.toString().trim()
+            val bDateTxt = binding.etBDate.text.toString()
             val gender = binding.spGender.selectedItem.toString()
-            val vulSituation:Array<String> = getCond()
+            val vulSituation: Array<String> = getCond()
 
+            if (bDateTxt.isNotEmpty()) {
+                val bDate = bDateTxt.toInt()
+                if (curp.length == 18) {
 
-            if (curp != ""){
-                viewModel.uploadCostumer(name, pLastName, mLastName, curp, bDate, gender, vulSituation) {success ->
-                    if (success) {
-                        val token = viewModel.customerToken.value
-                        if (!token.isNullOrBlank()){
-                            val alert = AlertDialog.Builder(requireActivity())
-                                .setTitle("T O K E N")
-                                .setMessage("Se le proporciona el siguiente token: ${token}")
-                                .setCancelable(false)
-                                .setPositiveButton("Aceptar"){_, _ ->
-                                    cleanRegistration()
+                    if (bDate in minDate..maxDate) {
+                        //Poner el campo de vulSituation en "No Aplica"
+                        viewModel.uploadCostumer(
+                            name, pLastName, mLastName, curp,
+                            bDate, gender, vulSituation
+                        ) { success ->
+                            if (success) {
+                                val token = viewModel.customerToken.value
+                                if (!token.isNullOrBlank()) {
+                                    val alert = AlertDialog.Builder(requireActivity())
+                                        .setTitle("T O K E N")
+                                        .setMessage("Se le proporciona el siguiente token: ${token}")
+                                        .setCancelable(false)
+                                        .setPositiveButton("Aceptar") { _, _ ->
+                                            cleanRegistration()
+                                        }
+                                    alert.show()
                                 }
-                            alert.show()
+                            }
                         }
+                    } else {
+                        Toast.makeText(requireActivity(), "Año de Nacimiento inválido", Toast.LENGTH_SHORT)
+                            .show()
                     }
+                } else {
+                    Toast.makeText(requireActivity(), "CURP incorrecta", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(requireActivity(), "Llena los campos", Toast.LENGTH_SHORT).show()
