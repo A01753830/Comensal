@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/inicio"/>
     <item>
-        <bitmap android:src="@drawable/ayuntamiento"
+        <bitmap android:src="@drawable/ayuntamiento1"
             android:gravity="center"/>
     </item>
 </layer-list>
