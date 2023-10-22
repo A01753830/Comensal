@@ -16,24 +16,51 @@ import mx.grm.prototipo4.model.vulCondAdapter
 import org.w3c.dom.Comment
 
 /**
- * Survey Frag View
- * @author Héctor González Sánchez
+ * SlideshowFragment - A Fragment for conducting a survey.
+ *
+ * This Fragment allows users to answer survey questions related to the quality of a dining experience.
+ * Users can rate different aspects of the experience and provide optional comments. The responses
+ * are associated with a specific dining location.
+ *
+ * @property binding - An instance of the FragmentSlideshowBinding class for managing the layout.
+ * @property viewModel - An instance of SlideshowViewModel for handling data and logic.
+ *
+ * @authors Héctor González Sánchez
+ * @authors Alfredo Azamar López
  */
-
 
 class SlideshowFragment : Fragment() {
 
     private lateinit var binding: FragmentSlideshowBinding
     private val viewModel: SlideshowViewModel by viewModels()
 
+    // Initialize FragmentSlideshowBinding and SlideshowViewModel.
+    // ...
+
+    /**
+     * Called when the Fragment is created. Inflates the layout defined in FragmentSlideshowBinding.
+     *
+     * @param inflater - The LayoutInflater used to inflate the layout.
+     * @param container - The parent view that the Fragment's UI should be attached to.
+     * @param savedInstanceState - A Bundle containing saved state information.
+     * @return The root View of the Fragment.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        // Inflate the layout using FragmentSlideshowBinding and return the root view.
         binding = FragmentSlideshowBinding.inflate(layoutInflater)
         return binding.root
     }
 
+    /**
+     * Called after the view is created. Initializes UI elements, sets up event listeners,
+     * and triggers data loading.
+     *
+     * @param view - The root View of the Fragment.
+     * @param savedInstanceState - A Bundle containing saved state information.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -45,7 +72,7 @@ class SlideshowFragment : Fragment() {
         val imageCalidad = binding.imageCalidad
         val imageServ = binding.imageServ
 
-        // Configurar registro
+        // Setup rating bars
         setupRatingBar(ratingBar, imageLimpieza)
         setupRatingBar(ratingBar2, imageCalidad)
         setupRatingBar(ratingBar3, imageServ)
@@ -54,6 +81,12 @@ class SlideshowFragment : Fragment() {
         uploadSurvey()
     }
 
+    /**
+     * Sets up the RatingBar widget and associates it with an ImageView to change images based on ratings.
+     *
+     * @param ratingBar - The RatingBar widget to configure.
+     * @param imageView - The ImageView to change based on RatingBar ratings.
+     */
     private fun setupRatingBar(ratingBar: RatingBar, imageView: ImageView) {
         ratingBar.numStars = 5
         ratingBar.stepSize = 1.0f
@@ -71,6 +104,9 @@ class SlideshowFragment : Fragment() {
         }
     }
 
+    /**
+     * Sets up listeners to respond to changes in the list of dining locations.
+     */
     private fun setUpListeners() {
 
         viewModel.diningNames.observe(viewLifecycleOwner) { list ->
@@ -81,6 +117,10 @@ class SlideshowFragment : Fragment() {
         }
     }
 
+
+    /**
+     * Handles the user's survey submission, including ratings, comments, and dining location.
+     */
     private fun uploadSurvey() {
         binding.btnUploadSurvey.setOnClickListener {
             if (binding.rbQuest1.rating != 0.0f &&
@@ -100,6 +140,11 @@ class SlideshowFragment : Fragment() {
         }
     }
 
+    /**
+     * Retrieves data related to the user's response to the first survey question.
+     *
+     * @param diningName - The selected dining location.
+     */
     private fun getQuestion1(diningName: String){
         val quest = binding.etQuest1.text.toString()
         val oldComment = binding.etComt1.text.toString()
@@ -109,6 +154,7 @@ class SlideshowFragment : Fragment() {
         return viewModel.uploadSurvey(diningName, quest, comment, score)
     }
 
+    // Similar functions for getting data for the second and third survey questions.
     private fun getQuestion2(diningName: String){
         val quest = binding.etQuest2.text.toString()
         val oldComment = binding.etComt2.text.toString()
@@ -127,6 +173,12 @@ class SlideshowFragment : Fragment() {
         return viewModel.uploadSurvey(diningName, quest, comment, score)
     }
 
+    /**
+     * Ensures that an empty comment is represented as "N/A".
+     *
+     * @param comment - The user's comment.
+     * @return The comment or "N/A" if it is empty.
+     */
     private fun emptyComment(comment: String): String{
         if (comment == ""){
             return "N/A"
@@ -134,6 +186,9 @@ class SlideshowFragment : Fragment() {
         return comment
     }
 
+    /**
+     * Resets the survey UI elements, clearing user inputs and resetting ratings and images.
+     */
     private fun cleanSurvey(){
         binding.etComt1.text?.clear()
         binding.etComt2.text?.clear()
@@ -148,6 +203,9 @@ class SlideshowFragment : Fragment() {
         binding.imageServ.setImageResource(R.drawable.normal)
     }
 
+    /**
+     * Called when the Fragment is started. Initiates the process of downloading dining location names.
+     */
     override fun onStart() {
         super.onStart()
         viewModel.downloadDiningNames()

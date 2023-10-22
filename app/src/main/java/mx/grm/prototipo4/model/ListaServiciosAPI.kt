@@ -19,7 +19,21 @@ import retrofit2.http.Path
 
 /**
  * Services (APIs) Pool
- * @author Héctor González Sánchez
+ *
+ * This interface defines a collection of service endpoints for making API requests to interact
+ * with various features of the application.
+ *
+ * @see RegisterReq Request data model for registering customers.
+ * @see SurveyReq Request data model for uploading survey records.
+ * @see DiningNameRes Response data model for dining names information.
+ * @see DiningStatusRes Response data model for dining status information.
+ * @see MenuRes Response data model for menu information.
+ * @see RegisterRes Response data model for register confirmation information.
+ * @see SurveyRes Response data model for uploading survey.
+ * @see vulCondRes Response data model for vulnerable condition information.
+ *
+ * @authors Héctor González Sánchez
+ * @authors Alfredo Azamar López
  */
 
 

@@ -15,8 +15,18 @@ import retrofit2.Callback
 import retrofit2.Response
 
 /**
- * Survey Frag ViewModel
- * @author Héctor González Sánchez
+ * SlideshowViewModel - ViewModel for the Survey Fragment.
+ *
+ * This ViewModel is responsible for managing data and business logic related to the survey functionality
+ * in the Survey Fragment. It interacts with the API to retrieve dining location names and to upload
+ * survey responses.
+ *
+ * @property _diningNames - A MutableLiveData that holds a list of DiningItem objects.
+ * @property diningNames - A LiveData property that exposes the list of dining location names to observers.
+ * @property apiCall - An instance of the ListaServiciosAPI interface to make API calls.
+ *
+ * @authors Héctor González Sánchez
+ * @authors Alfredo Azamar López
  */
 
 class SlideshowViewModel : ViewModel() {
@@ -26,7 +36,9 @@ class SlideshowViewModel : ViewModel() {
 
     private val apiCall: ListaServiciosAPI = RetrofitManager.apiService
 
-
+    /**
+     * Downloads the list of dining location names from the API.
+     */
     fun downloadDiningNames() {
 
         apiCall.getDiningNames().enqueue(object: Callback <DiningNameRes> {
@@ -49,6 +61,14 @@ class SlideshowViewModel : ViewModel() {
         })
     }
 
+    /**
+     * Uploads a survey response to the API.
+     *
+     * @param diningName - The name of the dining location.
+     * @param question - The survey question.
+     * @param comments - User comments (or "N/A" if empty).
+     * @param score - The user's rating for the question.
+     */
     fun uploadSurvey(diningName: String, question: String,
                      comments: String, score: Float){
 

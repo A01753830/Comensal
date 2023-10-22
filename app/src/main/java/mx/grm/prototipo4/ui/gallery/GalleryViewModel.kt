@@ -15,8 +15,24 @@ import retrofit2.Callback
 import retrofit2.Response
 
 /**
- * Menu Frag ViewModel
+ * GalleryViewModel - ViewModel for the Menu Fragment.
+ *
+ * This ViewModel is responsible for managing data and business logic related to displaying the menu and dining status
+ * information in the Menu Fragment. It interacts with the API to retrieve dining names, menu data, and dining status.
+ *
+ * @property _diningNames - A MutableLiveData that holds a list of DiningItem objects.
+ * @property diningNames - A LiveData property that exposes the list of dining location names to observers.
+ * @property menuMessage - A MutableLiveData that holds a message about the menu availability.
+ * @property soup - A MutableLiveData that holds the soup of the day.
+ * @property mainCourse - A MutableLiveData that holds the main course of the day.
+ * @property carbs - A MutableLiveData that holds the type of carbohydrates (e.g., bread) of the day.
+ * @property water - A MutableLiveData that holds the type of water of the day.
+ * @property beansSauce - A MutableLiveData that holds the type of beans or sauce of the day.
+ * @property diningStatus - A MutableLiveData that holds the dining status information.
+ * @property apiCall - An instance of the ListaServiciosAPI interface to make API calls.
+ *
  * @author Héctor González Sánchez
+ * @author Alfredo Azamamr López
  */
 
 class GalleryViewModel : ViewModel() {
@@ -36,6 +52,9 @@ class GalleryViewModel : ViewModel() {
 
     private val apiCall: ListaServiciosAPI = RetrofitManager.apiService
 
+    /**
+     * Downloads the list of dining location names from the API.
+     */
     fun downloadDiningNames() {
 
         apiCall.getDiningNames().enqueue(object: Callback <DiningNameRes> {
@@ -58,6 +77,11 @@ class GalleryViewModel : ViewModel() {
         })
     }
 
+    /**
+     * Retrieves and updates the menu items for a specific dining location and date from the API.
+     *
+     * @param diningName - The selected dining location.
+     */
     fun getMenu(diningName: DiningItem) {
 
         val date = MyDate().getCurrentDate()
@@ -97,6 +121,11 @@ class GalleryViewModel : ViewModel() {
         })
     }
 
+    /**
+     * Retrieves and updates the dining status information for a specific dining location from the API.
+     *
+     * @param diningName - The selected dining location.
+     */
     fun getDiningStatus(diningName: DiningItem) {
 
         apiCall.getDiningStat(diningName).enqueue(object: Callback<DiningStatusRes> {

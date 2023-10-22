@@ -23,8 +23,18 @@ import mx.grm.prototipo4.model.responses.vulCondItem
 import mx.grm.prototipo4.model.vulCondAdapter
 
 /**
- * Customer's auto-registration Frag View
- * @author Héctor González Sánchez
+ * HomeFragment - Fragment for Customer's Auto-Registration.
+ *
+ * This Fragment is responsible for the auto-registration of customers. It allows users to input their
+ * registration data, select vulnerable conditions, and initiate QR code scanning. It also provides links
+ * to privacy notices and additional help.
+ *
+ * @property binding - An instance of the FragmentSlideshowBinding class for managing the layout.
+ * @property viewModel - An instance of SlideshowViewModel for handling data and logic.
+ * @property adapter - An instance fo the vulCondAdapter class for populating the recyclerview
+ *
+ * @authors Héctor González Sánchez
+ * @authors Alfredo Azamar López
  */
 
 
@@ -35,6 +45,14 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
     private var adapter: vulCondAdapter? = null
 
+    /**
+     * Called when the Fragment is created. Inflates the layout defined in FragmentHomeBinding.
+     *
+     * @param inflater - The LayoutInflater used to inflate the layout.
+     * @param container - The parent view that the Fragment's UI should be attached to.
+     * @param savedInstanceState - A Bundle containing saved state information.
+     * @return The root View of the Fragment.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,6 +61,13 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Called after the view is created. Initializes UI elements, sets up event listeners,
+     * and loads vulnerable conditions data.
+     *
+     * @param view - The root View of the Fragment.
+     * @param savedInstanceState - A Bundle containing saved state information.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -60,6 +85,9 @@ class HomeFragment : Fragment() {
         getHelp()
     }
 
+    /**
+     * Loads and displays vulnerable conditions data from the ViewModel.
+     */
     private fun getVulSituations() {
         val layout = GridLayoutManager(requireContext(), 2)
         binding.rvVulSituations.layoutManager = layout
@@ -79,6 +107,9 @@ class HomeFragment : Fragment() {
         }
     }
 
+    /**
+     * Uploads customer registration data to the ViewModel and handles the response.
+     */
     private fun uploadCustomer() {
         binding.btnUploadCostumer.setOnClickListener {
             val name = binding.etName.text.toString()
@@ -112,6 +143,9 @@ class HomeFragment : Fragment() {
         }
     }
 
+    /**
+     * Sets up event listeners for UI elements.
+     */
     private fun setUpListeners(){
 
         binding.tvHelpSuper.setOnClickListener {
@@ -126,11 +160,19 @@ class HomeFragment : Fragment() {
         }
     }
 
+    /**
+     * Extracts selected vulnerable conditions from the adapter.
+     *
+     * @return An array of selected vulnerable conditions.
+     */
     private fun getCond(): Array<String> {
         val selectedCondition = adapter?.selectedConditions
         return selectedCondition!!.toTypedArray()
     }
 
+    /**
+     * Resets the registration UI elements, clearing user inputs.
+     */
     private fun cleanRegistration() {
         binding.etName.text?.clear()
         binding.etPLastName.text?.clear()
@@ -141,6 +183,9 @@ class HomeFragment : Fragment() {
         getVulSituations()
     }
 
+    /**
+     * Initiates QR code scanning and extracts registration data.
+     */
     private fun scanQR() {
         binding.btnRegQr.setOnClickListener {
             QrManager.startQrCodeScanner(requireActivity(), { result ->
@@ -185,6 +230,9 @@ class HomeFragment : Fragment() {
         }
     }
 
+    /**
+     * Opens a privacy notice link in a web browser.
+     */
     private fun getNoticePriv() {
         binding.tvNoticePriv.setOnClickListener {
             val url = "https://platopatodose3.ddns.net:8080/Aviso_de_privacidad.html"
@@ -193,6 +241,9 @@ class HomeFragment : Fragment() {
         }
     }
 
+    /**
+     * Opens a help link for CURP (Clave Única de Registro de Población) in a web browser.
+     */
     private fun getHelp() {
         binding.tvHelpReg.setOnClickListener {
             val url = "https://www.gob.mx/curp/"

@@ -16,7 +16,14 @@ import androidx.appcompat.app.AppCompatActivity
 import mx.grm.prototipo4.databinding.ActivityMainBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-
+/**
+ * Main Activity
+ *
+ * This class represents the main entry point of the application. It provides the user interface,
+ * navigation, and map-related functionality.
+ *
+ * @constructor Creates the `MainActivity`.
+ */
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Delay execution to showcase the app's splash screen or any initial loading animations
         Thread.sleep(1000)
         setTheme(R.style.Theme_Prototipo4)
         super.onCreate(savedInstanceState)
