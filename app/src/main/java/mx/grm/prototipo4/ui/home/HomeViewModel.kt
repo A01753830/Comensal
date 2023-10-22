@@ -18,8 +18,6 @@ import retrofit2.Response
  * This ViewModel manages data and business logic related to the customer's auto-registration process.
  * It communicates with the API to upload customer registration data and retrieve vulnerable conditions data.
  *
- * Author: Héctor González Sánchez
- *
  * @property apiCall - An instance of the ListaServiciosAPI interface for making API calls.
  * @property vulCondList - A MutableLiveData that holds a list of vulnerable condition items.
  * @property customerToken - A MutableLiveData that holds the customer's authentication token.
